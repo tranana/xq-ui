@@ -4,12 +4,23 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Cookies from 'js-cookie'
+import store from './store'
+
+import Element from 'element-ui'
+
+import VueMeta from 'vue-meta'
+
+Vue.use(VueMeta)
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium' // set element-ui default size
+})
+
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  store,
+  render: h => h(App)
 })
